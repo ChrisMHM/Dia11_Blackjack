@@ -31,7 +31,24 @@ def getFirstCard(playerDict):
 def setScore(playerDict, newScore):
     """Changes the actual score to a new one."""
     playerDict["score"] = newScore
+    return playerDict
 
-def newHand(actualHand):
-    """Returns the actual hand with a new card in it."""
-    return hand.addANewCard(actualHand)
+def setHand(playerDict, newHand):
+    """Changes the actual hand to a new one."""
+    playerDict["hand"] = newHand
+    return playerDict
+
+def getNewHand(playerDict, actualHand):
+    newPlayerHand = hand.addANewCard(actualHand)
+    playerWithNewHand = setHand(playerDict, newPlayerHand)
+    playerHand = getHand(playerWithNewHand)
+
+    return playerHand
+
+def getNewScore(playerDict):
+    newHand = getHand(playerDict)
+    newPlayerScore = hand.getScore(newHand)
+    playerWithNewScore = setScore(playerDict, newPlayerScore)
+    playerScore = getScore(playerWithNewScore)
+
+    return playerScore

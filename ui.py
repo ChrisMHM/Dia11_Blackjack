@@ -1,13 +1,13 @@
 import art
 import player
+import gameFunctionality
 
 logo  = art.logo
 
 #Player data
-gamer = player.getPlayer()
-gamerHand = player.getHand(gamer)
-gamerScore = player.getScore(gamer)
-newGamerScore = 0
+firstPlayer = player.getPlayer()
+firstPlayerHand = player.getHand(firstPlayer)
+firstPlayerScore = player.getScore(firstPlayer)
 
 #Dealer data
 dealer = player.getPlayer()
@@ -15,23 +15,18 @@ dealerHand = player.getHand(dealer)
 dealerScore = player.getScore(dealer)
 dealerFirstCard = player.getFirstCard(dealer)
 
-
 # playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
 playAGame = "y"
+again = True
 
 if playAGame == "y":
     print(logo)     
-    print(f"Your cards: {gamerHand}, current score: {gamerScore}")
-    print(f"Dealer cards: {dealerHand}, current score: {dealerScore}")
-    print(f"Computer's first card: {dealerFirstCard}")
-    # anotherCard = input("Type 'y' to get another card, type 'n' to pass: ")
-    anotherCard = "y"
-    if anotherCard == "y":
-        gamerHand = player.newHand(gamerHand)
-        newGamerScore = player.getScore(gamer)
-        player.setScore(gamer, newGamerScore)
-        gamerScore = player.getScore(gamer)
 
-        print(f"Your cards: {gamerHand}, current score: {gamerScore}")
-        print(f"Dealer cards: {dealerHand}, current score: {dealerScore}")
-        print(f"Computer's first card: {dealerFirstCard}")
+    while again:
+        anotherCard = gameFunctionality.printPlayersInfo(firstPlayerHand, firstPlayerScore, dealerHand, dealerScore, dealerFirstCard)
+        
+        if anotherCard == "y":
+            firstPlayerHand = player.getNewHand(firstPlayer, firstPlayerHand)
+            firstPlayerScore = player.getNewScore(firstPlayer)
+        else:
+            again = False
