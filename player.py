@@ -1,8 +1,28 @@
-import cardsController
 import hand
 
-deck = cardsController.cards
+playerInfo = {
+    "hand": [],
+    "score": 0,
+}
 
-hand = hand.getInitialHand(deck)
+def getPlayer():
+    """Returns a dictionary with the initial player info."""
+    playerInfo["hand"] = hand.getInitialHand()
+    playerInfo["score"] = hand.getScore(playerInfo["hand"])
 
-print(f"initial hand: {hand}")
+    return playerInfo
+
+def getHand():
+    return playerInfo["hand"]
+
+def getScore():
+    return playerInfo["score"]
+
+def setHand(newHand):
+    playerInfo["hand"] = newHand
+
+def setScore(newScore):
+    playerInfo["score"] = newScore
+
+def newHand(actualHand):
+    return hand.addANewCard(actualHand)
