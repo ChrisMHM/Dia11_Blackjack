@@ -1,38 +1,26 @@
 import cardsController
 
-def getInitialHand(deck):
-    initialHand = cardsController.getAHandOfTwoRandomCards(deck)
+def getInitialHand():
+    """Returns an initial hand to play."""
+    initialHand = cardsController.getAHandOfTwoRandomCards()
     return initialHand
 
-def addANewCard(actualHand, deck):
-    """Adds a new random card to a hand of a player."""
-    print(actualHand)
-    newCard = cardsController.getRandomCard(deck)
-    print(newCard)
-    actualHand.append(newCard)
+def addANewCard(hand):
+    """Adds a new random card to a hand's player."""
+    newCard = cardsController.getRandomCard()
+    hand.append(newCard)
 
-    return actualHand
-
-def getHand(hand):
     return hand
 
-def sumOfAHand(hand):
-    """Returns the sum of the card values of a hand."""
-    sum = 0
+def getHand(hand):
+    """Returns the hand list."""
+    return hand
 
-    for cardValue in hand:
-        sum += cardValue
+def getScore(hand):
+    """Returns the sum of the card' scores of a hand."""
+    score = 0
 
-    return sum
+    for cardScore in hand:
+        score += cardScore
 
-# for i in range(100):
-#     playerHand = getAHandOfTwoRandomCards(cards)
-#     dealerHand = getAHandOfTwoRandomCards(cards)
-#     sumOfPlayerHand = sumOfAHand(playerHand)
-#     sumOfDealerHand = sumOfAHand(dealerHand)
-
-#     print(f"player's hand: {playerHand}, sum {sumOfPlayerHand}")
-    # print(f"dealer's hand: {dealerHand}, sum {sumOfDealerHand}")
-
-# newHand = addANewCard(initialHand, deck)
-# print(newHand)
+    return score

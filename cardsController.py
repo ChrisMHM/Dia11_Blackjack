@@ -1,29 +1,24 @@
 import random
+import blackjackDeck
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+CARDS = blackjackDeck.CARDS
 
-def getRandomCard(deck):
+def getRandomCard():
     """Return a random card from a deck of any size."""
+    deck = CARDS
     cardsListSize = len(deck)
     # print(cardsListSize)
     randomIndex = random.randint(0, cardsListSize - 1)
     # print(f"index: {randomIndex} card: {cards[randomIndex]}")
 
-    return cards[randomIndex]
+    return CARDS[randomIndex]
 
-# for i in range(1000):
-#     randomCard = getRandomCard()
-#     print(f"The random card selected is {randomCard}")
-
-def getAHandOfTwoRandomCards(deck):
+def getAHandOfTwoRandomCards():
     """Returns a hand of two random cards from a deck."""
+    deck = CARDS
     randomCardsList = []
     for i in range(2):
-        randomCard = getRandomCard(deck)
+        randomCard = getRandomCard()
         randomCardsList.append(randomCard)
 
     return randomCardsList
-
-
-
-# print(f"player cards: {playerCards}, dealer cards {dealerCards}")
