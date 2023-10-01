@@ -1,83 +1,29 @@
 import art
 import clear
-import time
 
-operations = """+
--
-*
-/"""
+############### Blackjack Project #####################
 
-again = True
-usingResultAgain = False
+#Difficulty Normal 😎: Use all Hints below to complete the project.
+#Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
+#Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
+#Difficulty Expert 🤯: Only use Hint 1 to complete the project.
 
+############### Our Blackjack House Rules #####################
 
-#Operation functions
-def sum(firstNumber, secondNumber):
-    """Returns the sum of two integer numbers 
-    passed as parameters"""
-    return firstNumber + secondNumber
+## The deck is unlimited in size. 
+## There are no jokers. 
+## The Jack/Queen/King all count as 10.
+## The the Ace can count as 11 or 1.
+## Use the following list as the deck of cards:
+## cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+## The cards in the list have equal probability of being drawn.
+## Cards are not removed from the deck as they are drawn.
+## The computer is the dealer.
 
-def subtract(firstNumber, secondNumber):
-    return firstNumber - secondNumber
+##################### Hints #####################
 
-def multiply(firstNumber, secondNumber):
-    return firstNumber * secondNumber
+#Hint 1: Go to this website and try out the Blackjack game: 
+#   https://games.washingtonpost.com/games/blackjack/
+#Then try out the completed Blackjack project here: 
+#   http://blackjack-final.appbrewery.repl.run
 
-def divide(firstNumber, secondNumber):
-    return round(firstNumber/secondNumber, 2)
-
-def choiseOperation(firstNumber, secondNumber, operation):
-    result = 0
-    if operation == "+":
-        result = sum(firstNumber, secondNumber)
-    elif operation == "-":
-        result = subtract(firstNumber, secondNumber)
-    elif operation == "*":
-        result = multiply(firstNumber, secondNumber)
-    elif operation == "/":
-        if secondNumber == 0:
-            return None
-        else:
-            result = divide(firstNumber, secondNumber)
-    else:
-        result = None
-
-    return result
-
-def getFirstNumber():
-    print(art.logo)
-    firstNumber = int(input("What's the first number?: "))
-    print(operations)
-
-    return firstNumber
-
-def getResult(firstNumber):
-    operation = input("Pick an operation: ")
-    secondNumber = int(input("What's the next number?: "))
-    result = choiseOperation(firstNumber, secondNumber, operation)
-
-    if result is None:
-        print("Not valid operation")
-    else:
-        print(f"{firstNumber} {operation} {secondNumber} = {result}")
-
-    return result
-
-while again:
-    if usingResultAgain:
-        result = getResult(result)
-    else:
-        firstNumber = getFirstNumber()
-        result = getResult(firstNumber)
-    
-    if result == None:
-        usingResultAgain = False
-        time.sleep(3)
-        clear.clear()
-    else:
-        repeat = input(f"Type 'y' to continue calculating with {result}, or type 'n' to start a new calculation: ")
-        if repeat == "n":
-            clear.clear()
-            usingResultAgain = False
-        else:
-            usingResultAgain = True
