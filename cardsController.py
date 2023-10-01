@@ -7,9 +7,7 @@ def getRandomCard():
     """Return a random card from a deck of any size."""
     deck = CARDS
     cardsListSize = len(deck)
-    # print(cardsListSize)
     randomIndex = random.randint(0, cardsListSize - 1)
-    # print(f"index: {randomIndex} card: {cards[randomIndex]}")
 
     return CARDS[randomIndex]
 
