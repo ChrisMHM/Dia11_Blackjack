@@ -15,11 +15,12 @@ dealerHand = player.getHand(dealer)
 dealerScore = player.getScore(dealer)
 dealerFirstCard = player.getFirstCard(dealer)
 
-# playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
 playAGame = "y"
 again = True
 
-if playAGame == "y":
+while playAGame == "y":
+    playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
+
     print(logo)     
 
     while again:
