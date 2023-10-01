@@ -15,8 +15,8 @@ def getRandomCard(deck):
 #     randomCard = getRandomCard()
 #     print(f"The random card selected is {randomCard}")
 
-def giveTwoRandomCards(deck):
-    """Returns a list of two random cards from a deck."""
+def getAHandOfTwoRandomCards(deck):
+    """Returns a hand of two random cards from a deck."""
     randomCardsList = []
     for i in range(2):
         randomCard = getRandomCard(deck)
@@ -24,7 +24,24 @@ def giveTwoRandomCards(deck):
 
     return randomCardsList
 
-# playerCards = giveTwoRandomCards(cards)
-# dealerCards = giveTwoRandomCards(cards)
+
 
 # print(f"player cards: {playerCards}, dealer cards {dealerCards}")
+
+def sumOfAHand(hand):
+    """Returns the sum of the card values of a hand."""
+    sum = 0
+
+    for cardValue in hand:
+        sum += cardValue
+
+    return sum
+
+# for i in range(100):
+#     playerHand = getAHandOfTwoRandomCards(cards)
+#     dealerHand = getAHandOfTwoRandomCards(cards)
+#     sumOfPlayerHand = sumOfAHand(playerHand)
+#     sumOfDealerHand = sumOfAHand(dealerHand)
+
+#     print(f"player's hand: {playerHand}, sum {sumOfPlayerHand}")
+    # print(f"dealer's hand: {dealerHand}, sum {sumOfDealerHand}")
