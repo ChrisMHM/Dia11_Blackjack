@@ -27,21 +27,3 @@ def getAHandOfTwoRandomCards(deck):
 
 
 # print(f"player cards: {playerCards}, dealer cards {dealerCards}")
-
-def sumOfAHand(hand):
-    """Returns the sum of the card values of a hand."""
-    sum = 0
-
-    for cardValue in hand:
-        sum += cardValue
-
-    return sum
-
-# for i in range(100):
-#     playerHand = getAHandOfTwoRandomCards(cards)
-#     dealerHand = getAHandOfTwoRandomCards(cards)
-#     sumOfPlayerHand = sumOfAHand(playerHand)
-#     sumOfDealerHand = sumOfAHand(dealerHand)
-
-#     print(f"player's hand: {playerHand}, sum {sumOfPlayerHand}")
-    # print(f"dealer's hand: {dealerHand}, sum {sumOfDealerHand}")
