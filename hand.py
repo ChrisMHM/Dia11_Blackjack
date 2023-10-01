@@ -1,8 +1,8 @@
 import cardsController
 
-deck = cardsController.cards
-initialHand = cardsController.getAHandOfTwoRandomCards(deck)
-newHand = []
+def getInitialHand(deck):
+    initialHand = cardsController.getAHandOfTwoRandomCards(deck)
+    return initialHand
 
 def addANewCard(actualHand, deck):
     """Adds a new random card to a hand of a player."""
@@ -13,8 +13,8 @@ def addANewCard(actualHand, deck):
 
     return actualHand
 
-def getHand(actualHand):
-    return actualHand
+def getHand(hand):
+    return hand
 
 def sumOfAHand(hand):
     """Returns the sum of the card values of a hand."""
