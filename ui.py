@@ -1,8 +1,11 @@
 import art
 import player
 import gameFunctionality
+import clear
 
 logo  = art.logo
+newCardsCounter = 0
+NO_WINNER = -1
 
 #Player data
 firstPlayer = player.getPlayer()
@@ -15,19 +18,48 @@ dealerHand = player.getHand(dealer)
 dealerScore = player.getScore(dealer)
 dealerFirstCard = player.getFirstCard(dealer)
 
-playAGame = "y"
+playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
 again = True
 
 while playAGame == "y":
-    playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
+    clear.clear()
 
     print(logo)     
 
     while again:
-        anotherCard = gameFunctionality.printPlayersInfo(firstPlayerHand, firstPlayerScore, dealerHand, dealerScore, dealerFirstCard)
-        
-        if anotherCard == "y":
-            firstPlayerHand = player.getNewHand(firstPlayer, firstPlayerHand)
-            firstPlayerScore = player.getNewScore(firstPlayer)
-        else:
+        gameFunctionality.printPlayersInfo(firstPlayerHand, firstPlayerScore, dealerHand, dealerScore, dealerFirstCard)
+
+        blackjackBustedResult = gameFunctionality.blackjackOrBusted(firstPlayerScore, dealerScore, newCardsCounter)
+        newCardsCounter += 1
+
+        if blackjackBustedResult != NO_WINNER:
             again = False
+        else:
+            anotherCard = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+            
+            if anotherCard == "y":
+                firstPlayerHand = player.getNewHand(firstPlayer, firstPlayerHand)
+                firstPlayerScore = player.getNewScore(firstPlayer)
+
+            else:
+                again = False
+
+    playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+    if playAGame == "y":
+        again = True
+        newCardsCounter = 0
+        #Player data
+        firstPlayer = player.getPlayer()
+        firstPlayerHand = player.getHand(firstPlayer)
+        firstPlayerScore = player.getScore(firstPlayer)
+
+        #Dealer data
+        dealer = player.getPlayer()
+        dealerHand = player.getHand(dealer)
+        dealerScore = player.getScore(dealer)
+        dealerFirstCard = player.getFirstCard(dealer)
+    else:
+        again = False 
+        print("Bye")
+
+print("Game finished!")
