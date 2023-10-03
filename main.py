@@ -1,5 +1,4 @@
-import art
-import clear
+import ui
 
 ############### Blackjack Project #####################
 
@@ -27,3 +26,4 @@ import clear
 #Then try out the completed Blackjack project here: 
 #   http://blackjack-final.appbrewery.repl.run
 
+ui.star()

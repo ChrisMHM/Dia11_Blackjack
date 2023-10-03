@@ -6,14 +6,11 @@ BLACKJACK = 21
 def printPlayersInfo(firstPlayerHand, firstPlayerScore, secondPlayerHand, secondPlayerScore, secondPlayerFirstCard):
     """Prints the actual status of player's hands and scores."""
     print(f"\tYour cards: {firstPlayerHand}, current score: {firstPlayerScore}")
-    print(f"\tDealer cards: {secondPlayerHand}, current score: {secondPlayerScore}")
+    # print(f"\tDealer cards: {secondPlayerHand}, current score: {secondPlayerScore}")
     print(f"\tComputer's first card: {secondPlayerFirstCard}")
 
-# def printFinalPlayersInfo(firstPlayerHand, firstPlayerScore, secondPlayerHand, secondPlayerScore):
 def printFinalPlayersInfo(firstPlayer, secondPlayer):
     """Prints the final results after dealer's decisions."""
-    # print(f"first {firstPlayer}, second {secondPlayer}")
-
     firstPlayerHand = player.getHand(firstPlayer)
     secondPlayerHand = player.getHand(secondPlayer)
     firstPlayerScore = player.getScore(firstPlayer)
@@ -23,6 +20,7 @@ def printFinalPlayersInfo(firstPlayer, secondPlayer):
     print(f"\tComputer's final hand: {secondPlayerHand}, final score: {secondPlayerScore}")
 
 def winner(firstPlayerScore, secondPlayerScore):
+    """Returns a string with the winner of two players."""
     isBusted = busted(firstPlayerScore, secondPlayerScore)
 
     if isBusted == NO_WINNER:
@@ -35,6 +33,7 @@ def winner(firstPlayerScore, secondPlayerScore):
     return isBusted
 
 def blackjack(firstPlayerScore, secondPlayerScore):
+    """Evaluate the player's score to determinate if there is a blackjack."""
     S_BLACKJACK = 22
 
     if firstPlayerScore == BLACKJACK and secondPlayerScore == BLACKJACK:
@@ -47,6 +46,7 @@ def blackjack(firstPlayerScore, secondPlayerScore):
     return NO_WINNER
     
 def busted(firstPlayerScore, secondPlayerScore):
+    """Evaluate the player's scores to determinate if someone is busted."""
     if firstPlayerScore > 21:
         return "You went over. You lose 😤"
     if secondPlayerScore > 21:
@@ -65,6 +65,7 @@ def blackjackOrBusted(firstPlayerScore, secondPlayerScore, newCardsCounter):
     return winner
 
 def dealerDecisions(firstPlayer, secondPlayer):
+    """Dealer takes a desicion using player's scores."""
     firstPlayerScore = player.getScore(firstPlayer)
     secondPlayerScore = player.getScore(secondPlayer)
     players = []
@@ -94,6 +95,7 @@ def drawNewCard(secondPlayer):
     return player.getNewScore(secondPlayer)
 
 def findWinner(firstPlayer, secondPlayer):
+    """Returns a list with the winner and player's data."""
     firstPlayerScore = player.getScore(firstPlayer)
     secondPlayerScore = player.getScore(secondPlayer)
     players = []
