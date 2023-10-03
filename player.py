@@ -38,7 +38,9 @@ def setHand(playerDict, newHand):
     playerDict["hand"] = newHand
     return playerDict
 
-def getNewHand(playerDict, actualHand):
+def getNewHand(playerDict):
+    """Returns a new hand with adding a new card"""
+    actualHand = getHand(playerDict)
     newPlayerHand = hand.addANewCard(actualHand)
     playerWithNewHand = setHand(playerDict, newPlayerHand)
     playerHand = getHand(playerWithNewHand)

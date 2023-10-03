@@ -5,7 +5,7 @@ import clear
 
 logo  = art.logo
 newCardsCounter = 0
-NO_WINNER = -1
+NO_WINNER = ""
 
 #Player data
 firstPlayer = player.getPlayer()
@@ -33,15 +33,23 @@ while playAGame == "y":
         newCardsCounter += 1
 
         if blackjackBustedResult != NO_WINNER:
+            gameFunctionality.printFinalPlayersInfo(firstPlayer, dealer)
+            print(blackjackBustedResult)
             again = False
         else:
             anotherCard = input("Type 'y' to get another card, type 'n' to pass: ").lower()
             
             if anotherCard == "y":
-                firstPlayerHand = player.getNewHand(firstPlayer, firstPlayerHand)
+                firstPlayerHand = player.getNewHand(firstPlayer)
                 firstPlayerScore = player.getNewScore(firstPlayer)
 
             else:
+                playersStatus = gameFunctionality.dealerDecisions(firstPlayer, dealer)
+                firstPlayer = playersStatus[0]
+                dealer = playersStatus[1]
+                resultString = playersStatus[2]
+                gameFunctionality.printFinalPlayersInfo(firstPlayer, dealer)
+                print(resultString)
                 again = False
 
     playAGame = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
